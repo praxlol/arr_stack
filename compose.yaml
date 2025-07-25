@@ -3,4 +3,4 @@ services:
     image: hello-world
 networks: 
     default:
-      name: test-network
+      name: test-network-git
