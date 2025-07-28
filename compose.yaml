@@ -17,7 +17,7 @@ services:
       - TZ=${TZ:?error}
     volumes:
       - ${APPDATA:?error}/jellyfin/config:/config
-#      - ${MEDIA_SHARE:?error}/media:/data/media
+      - ${MEDIA_SHARE:?error}/media:/data/media
 #      - ${HDD_MNT:?error}/media/:/data/media
     ports:
       - 8096:8096
@@ -53,7 +53,7 @@ services:
       - TZ=${TZ:?error}
     volumes:
       - ${APPDATA:?error}/radarr/config:/config
-#      - ${MEDIA_SHARE:?error}:/data
+      - ${MEDIA_SHARE:?error}:/data
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -69,7 +69,7 @@ services:
       - TZ=${TZ:?error}
     volumes:
       - ${APPDATA:?error}/bazarr/config:/config
-#      - ${MEDIA_SHARE:?error}:/data
+      - ${MEDIA_SHARE:?error}:/data
     ports:
       - 6767:6767
     restart: unless-stopped
@@ -89,7 +89,7 @@ services:
       - 5055:5055
     volumes:
       - ${APPDATA:?error}/jellyseerr/config:/app/config
-#      - ${MEDIA_SHARE:?error}:/data
+      - ${MEDIA_SHARE:?error}:/data
     restart: unless-stopped
     depends_on:
       - radarr
