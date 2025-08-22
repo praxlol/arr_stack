@@ -96,13 +96,7 @@ services:
     volumes:
       - ${APPDATA:?error}/jellyseerr/config:/app/config
       - ${MEDIA_SHARE:?error}/data:/data
-    restart: unless-stopped
-    healthcheck:
-      test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status || exit 1
-      start_period: 20s
-      timeout: 3s
-      interval: 15s
-      retries: 3
+    # restart: unless-stopped
     depends_on:
       - radarr
       - sonarr
@@ -119,3 +113,4 @@ services:
       - 7007:7007
     networks:
       - dozzle
+    restart: unless-stopped
