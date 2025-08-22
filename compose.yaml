@@ -5,6 +5,8 @@ networks:
     external: true
   qbit:
     external: true
+  dozzle:
+    external: true
 
 
 services:
@@ -26,6 +28,7 @@ services:
     restart: unless-stopped
     networks:
       - starr
+      - dozzle
 
   sonarr:
     image: linuxserver/sonarr
@@ -42,6 +45,7 @@ services:
     restart: unless-stopped    
     networks:
       - starr
+      - dozzle
 
 
   radarr:
@@ -59,6 +63,7 @@ services:
     restart: unless-stopped
     networks:
       - starr
+      - dozzle
     
   bazarr:
     image: linuxserver/bazarr
@@ -75,6 +80,7 @@ services:
     restart: unless-stopped
     networks:
       - starr
+      - dozzle
 
     
   jellyseerr:
@@ -102,6 +108,7 @@ services:
       - sonarr
     networks:
       - starr
+      - dozzle
   
   dozzle-agent:
     image: amir20/dozzle:latest
@@ -110,3 +117,5 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     ports:
       - 7007:7007
+    networks:
+      - dozzle
