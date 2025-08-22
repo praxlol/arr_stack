@@ -78,7 +78,7 @@ services:
 
     
   jellyseerr:
-    image: fallenbagel/jellyseerr:develop
+    image: fallenbagel/jellyseerr:latest
     container_name: jellyseerr
     environment:
       - PUID=${PUID:?error}
@@ -91,6 +91,12 @@ services:
       - ${APPDATA:?error}/jellyseerr/config:/app/config
       - ${MEDIA_SHARE:?error}/data:/data
     restart: unless-stopped
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status || exit 1
+      start_period: 20s
+      timeout: 3s
+      interval: 15s
+      retries: 3
     depends_on:
       - radarr
       - sonarr
