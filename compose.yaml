@@ -13,6 +13,7 @@ services:
   jellyfin:
     image: jellyfin/jellyfin
     container_name: jellyfin
+    hostname: jellyfin
     environment:
       - PUID=${PUID:?error}
       - PGID=${PGID:?error}
@@ -33,6 +34,7 @@ services:
   sonarr:
     image: linuxserver/sonarr
     container_name: sonarr
+    hostname: sonarr
     environment:
       - PUID=${PUID:?error}
       - PGID=${PGID:?error}
@@ -51,6 +53,7 @@ services:
   radarr:
     image: linuxserver/radarr
     container_name: radarr
+    hostname: radarr
     environment:
       - PUID=${PUID:?error}
       - PGID=${PGID:?error}
@@ -68,6 +71,7 @@ services:
   bazarr:
     image: linuxserver/bazarr
     container_name: bazarr
+    hostname: bazarr
     environment:
       - PUID=${PUID:?error}
       - PGID=${PGID:?error}
@@ -86,6 +90,7 @@ services:
   jellyseerr:
     image: fallenbagel/jellyseerr:latest
     container_name: jellyseerr
+    hostname: jellyseerr
     environment:
       - PUID=${PUID:?error}
       - PGID=${PGID:?error}
@@ -106,6 +111,8 @@ services:
   
   dozzle-agent:
     image: amir20/dozzle:latest
+    container_name: dozzle_media_stack
+    hostname: dozzle_media_stack
     command: agent
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
