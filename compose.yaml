@@ -25,7 +25,7 @@ services:
     ports:
       - 8096:8096
     devices:
-      - /dev/dri:/dev/dri #Required for jellyfin HW transcoding / QuickSync
+#      - /dev/dri:/dev/dri #Required for jellyfin HW transcoding / QuickSync
     restart: unless-stopped
     networks:
       - starr
