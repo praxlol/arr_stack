@@ -24,7 +24,7 @@ services:
 #      - ${HDD_MNT:?error}/media/:/data/media
     ports:
       - 8096:8096
-    devices:
+#    devices:
 #      - /dev/dri:/dev/dri #Required for jellyfin HW transcoding / QuickSync
     restart: unless-stopped
     networks:
