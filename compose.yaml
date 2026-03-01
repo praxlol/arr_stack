@@ -133,14 +133,14 @@ services:
       - dozzle
 
   organizr:
+    image: organizr/organizr:latest
     container_name: organizr
     hostname: organizr
-    image: organizr/organizr:latest
     restart: unless-stopped
     ports:
       - 80:80
     volumes:
-      - <${APPDATA:?error}/organizr/config:/config
+      - ${APPDATA:?error}/organizr/config:/config
     environment:
       - PUID=${PUID:?error}
       - PGID=${PGID:?error}
