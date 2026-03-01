@@ -120,15 +120,14 @@ services:
       - PUID=${PUID:?error}
       - PGID=${PGID:?error}
       - TZ=${TZ:?error}
+    depends_on:
+      - radarr
+      - sonarr
+    networks:
+      - starr
+      - dozzle
 
-  qui:
-    image: ghcr.io/autobrr/qui:latest
-    container_name: qui
-    restart: unless-stopped
-    ports:
-      - 7476:7476
-    volumes:
-      - ${APPDATA:?error}/qui/config:/config
+
   
   dozzle-agent:
     image: amir20/dozzle:latest
