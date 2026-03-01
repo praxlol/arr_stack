@@ -108,6 +108,18 @@ services:
     networks:
       - starr
       - dozzle
+
+  profilarr:
+    image: ghcr.io/dictionarry-hub/profilarr:latest
+    container_name: profilarr
+    ports:
+      - "6868:6868"
+    volumes:
+      - ${APPDATA:?error}/profilarr/config:/config
+    environment:
+      - PUID=${PUID:?error}
+      - PGID=${PGID:?error}
+      - TZ=${TZ:?error}
   
   dozzle-agent:
     image: amir20/dozzle:latest
