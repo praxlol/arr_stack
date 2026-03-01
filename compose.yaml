@@ -132,6 +132,19 @@ services:
       - starr
       - dozzle
 
+  organizr:
+    container_name: organizr
+    hostname: organizr
+    image: organizr/organizr:latest
+    restart: unless-stopped
+    ports:
+      - 80:80
+    volumes:
+      - <${APPDATA:?error}/organizr/config:/config
+    environment:
+      - PUID=${PUID:?error}
+      - PGID=${PGID:?error}
+      - TZ=${TZ:?error}
 
   
   dozzle-agent:
