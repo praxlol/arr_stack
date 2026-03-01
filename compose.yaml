@@ -120,11 +120,20 @@ services:
       - PUID=${PUID:?error}
       - PGID=${PGID:?error}
       - TZ=${TZ:?error}
+
+  qui:
+    image: ghcr.io/autobrr/qui:latest
+    container_name: qui
+    restart: unless-stopped
+    ports:
+      - 7476:7476
+    volumes:
+      - ${APPDATA:?error}/qui/config:/config
   
   dozzle-agent:
     image: amir20/dozzle:latest
-    container_name: dozzle_media_stack
-    hostname: dozzle_media_stack
+    container_name: dozzle_arr_stack
+    hostname: dozzle_arr_stack
     command: agent
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
