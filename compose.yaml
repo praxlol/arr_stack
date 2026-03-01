@@ -86,22 +86,26 @@ services:
       - starr
       - dozzle
 
-    
-  jellyseerr:
-    image: fallenbagel/jellyseerr:latest
-    container_name: jellyseerr
-    hostname: jellyseerr
+  seerr:
+    image: ghcr.io/seerr-team/seerr:latest
+    init: true
+    container_name: seerr
+    hostname: seerr
     environment:
-      - PUID=${PUID:?error}
-      - PGID=${PGID:?error}
       - LOG_LEVEL=debug
-      - TZ=${TZ:?error}
+      - TZ=Asia/Tashkent
+      - PORT=5055 #optional
     ports:
       - 5055:5055
     volumes:
-      - ${APPDATA:?error}/jellyseerr/config:/app/config
-      - ${MEDIA_SHARE1:?error}/data:/data
-    # restart: unless-stopped
+      - ${APPDATA:?error}/seerr/config:/config
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status || exit 1
+      start_period: 20s
+      timeout: 3s
+      interval: 15s
+      retries: 3
+    restart: unless-stopped
     depends_on:
       - radarr
       - sonarr
@@ -113,7 +117,7 @@ services:
     image: ghcr.io/dictionarry-hub/profilarr:latest
     container_name: profilarr
     ports:
-      - "6868:6868"
+      - 6868:6868
     volumes:
       - ${APPDATA:?error}/profilarr/config:/config
     environment:
