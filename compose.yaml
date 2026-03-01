@@ -132,19 +132,23 @@ services:
       - starr
       - dozzle
 
-  organizr:
-    image: organizr/organizr:latest
-    container_name: organizr
-    hostname: organizr
-    restart: unless-stopped
-    ports:
-      - 80:80
-    volumes:
-      - ${APPDATA:?error}/organizr/config:/config
-    environment:
-      - PUID=${PUID:?error}
-      - PGID=${PGID:?error}
-      - TZ=${TZ:?error}
+#  organizr:
+#    image: organizr/organizr:latest
+#    container_name: organizr
+#    hostname: organizr
+#    restart: unless-stopped
+#    ports:
+#      - 80:80
+#    volumes:
+#      - ${APPDATA:?error}/organizr/config:/config
+#    environment:
+#      - PUID=${PUID:?error}
+#      - PGID=${PGID:?error}
+#      - TZ=${TZ:?error}
+#    networks:
+#      - starr
+#      - dozzle
+#      - qbit
 
   
   dozzle-agent:
