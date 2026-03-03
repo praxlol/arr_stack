@@ -84,7 +84,7 @@ services:
     restart: unless-stopped
     networks:
       - starr
-      - dozzle
+      - admin
 
   seerr:
     image: ghcr.io/seerr-team/seerr:latest
@@ -111,7 +111,7 @@ services:
       - sonarr
     networks:
       - starr
-      - dozzle
+      - admin
 
   profilarr:
     image: santiagosayshey/profilarr:latest
@@ -130,36 +130,5 @@ services:
       - sonarr
     networks:
       - starr
-      - dozzle
-
-#  organizr:
-#    image: organizr/organizr:latest
-#    container_name: organizr
-#    hostname: organizr
-#    restart: unless-stopped
-#    ports:
-#      - 80:80
-#    volumes:
-#      - ${APPDATA:?error}/organizr/config:/config
-#    environment:
-#      - PUID=${PUID:?error}
-#      - PGID=${PGID:?error}
-#      - TZ=${TZ:?error}
-#    networks:
-#      - starr
-#      - dozzle
-#      - qbit
-
-  
-  dozzle-agent:
-    image: amir20/dozzle:latest
-    container_name: dozzle_arr_stack
-    hostname: dozzle_arr_stack
-    command: agent
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    ports:
-      - 7007:7007
-    networks:
-      - dozzle
-    restart: unless-stopped
+      - admin
+      
