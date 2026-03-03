@@ -5,7 +5,7 @@ networks:
     external: true
   qbit:
     external: true
-  dozzle:
+  admin:
     external: true
 
 
@@ -29,7 +29,7 @@ services:
     restart: unless-stopped
     networks:
       - starr
-      - dozzle
+      - admin
 
   sonarr:
     image: linuxserver/sonarr
@@ -47,7 +47,7 @@ services:
     restart: unless-stopped    
     networks:
       - starr
-      - dozzle
+      - admin
 
 
   radarr:
@@ -66,7 +66,7 @@ services:
     restart: unless-stopped
     networks:
       - starr
-      - dozzle
+      - admin
     
   bazarr:
     image: linuxserver/bazarr
