@@ -21,7 +21,7 @@ services:
     volumes:
       - ${APPDATA:?error}/jellyfin/config:/config
       - ${MEDIA_SHARE1:?error}/data/media:/data/media
-#      - ${HDD_MNT:?error}/media/:/data/media
+      - ${HDD_MNT:?error}/Media/:/data/media/usb_hdd
     ports:
       - 8096:8096
 #    devices:
