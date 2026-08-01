@@ -42,7 +42,7 @@ services:
     volumes:
       - ${APPDATA:?error}/sonarr/config:/config
       - ${MEDIA_SHARE1:?error}/data:/data
-      - ${HDD_MNT:?error}/Media/:/data/media/usb_hdd
+      - ${HDD_MNT:?error}/Media:/data/media/usb_hdd
     ports:
       - 8989:8989
     restart: unless-stopped    
