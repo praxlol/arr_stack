@@ -80,6 +80,7 @@ services:
     volumes:
       - ${APPDATA:?error}/bazarr/config:/config
       - ${MEDIA_SHARE1:?error}/data:/data
+      - ${HDD_MNT:?error}/Media:/data/media/usb_hdd
     ports:
       - 6767:6767
     restart: unless-stopped
