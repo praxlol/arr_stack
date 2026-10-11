@@ -52,6 +52,7 @@ services:
     environment: *common-env
     volumes:
       - ${APPDATA:?set APPDATA in .env}/jellyfin/config:/config
+      - ${APPDATA}/jellyfin/cache:/cache
       - ${MEDIA_SHARE1:?set MEDIA_SHARE1 in .env}/data/media:/data/media
       - *usb-hdd
     ports:
