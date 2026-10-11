@@ -58,7 +58,6 @@ services:
       - 8096:8096
 #    devices:
 #      - /dev/dri:/dev/dri #Required for jellyfin HW transcoding / QuickSync
-    restart: unless-stopped
     networks:
       - starr
 
@@ -73,8 +72,7 @@ services:
       - ${MEDIA_SHARE1:?set MEDIA_SHARE1 in .env}/data:/data
       - *usb-hdd
     ports:
-      - 8989:8989
-    restart: unless-stopped    
+      - 8989:8989  
     networks:
       - starr
     healthcheck:
@@ -98,7 +96,6 @@ services:
       - *usb-hdd
     ports:
       - 7878:7878
-    restart: unless-stopped
     networks:
       - starr
     healthcheck:
@@ -121,7 +118,6 @@ services:
       - *usb-hdd
     ports:
       - 6767:6767
-    restart: unless-stopped
     networks:
       - starr
 
