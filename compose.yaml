@@ -75,8 +75,9 @@ services:
       - 8989:8989  
     networks:
       - starr
+      - qbit
     healthcheck:
-      test: ["CMD", "curl", "-fsS", "http://localhost:7878/ping"]
+      test: ["CMD", "curl", "-fsS", "http://localhost:8989/ping"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -98,8 +99,9 @@ services:
       - 7878:7878
     networks:
       - starr
+      - qbit
     healthcheck:
-      test: ["CMD", "curl", "-fsS", "http://localhost:8989/ping"]
+      test: ["CMD", "curl", "-fsS", "http://localhost:7878/ping"]
       interval: 30s
       timeout: 10s
       retries: 3
