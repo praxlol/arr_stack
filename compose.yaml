@@ -132,7 +132,7 @@ services:
     hostname: seerr
     <<: *service-defaults
     environment:
-      LOG_LEVEL=info
+      LOG_LEVEL: info
       TZ: ${TZ:?set TZ in .env}
     ports:
       - "5055:5055"
